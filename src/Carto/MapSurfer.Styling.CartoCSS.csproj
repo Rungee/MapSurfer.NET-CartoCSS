@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MapSurfer.Styling.CartoCSS</RootNamespace>
     <AssemblyName>MapSurfer.Styling.CartoCSS</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -72,64 +72,34 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GeoAPI, Version=1.1.0.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\GeoAPI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MapSurfer.Core, Version=2.40.5827.36048, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\MapSurfer.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MapSurfer.Data">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\MapSurfer.Data.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MapSurfer.Data.GDALWrapper">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\MapSurfer.Data.GDALWrapper.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MapSurfer.Drawing">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\MapSurfer.Drawing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MapSurfer.Geometries, Version=2.40.5827.36039, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\MapSurfer.Geometries.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MapSurfer.Logging">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\MapSurfer.Logging.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MapSurfer.Projections">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\MapSurfer.Projections.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MapSurfer.System, Version=2.40.5827.36023, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\MapSurfer.System.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="osr_csharp">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\osr_csharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ProjNet">
-      <HintPath>..\..\packages\MapSurfer.NET.Core.2.4\lib\net45\Core\ProjNet.dll</HintPath>
+      <HintPath>..\..\..\External References\GDAL\osr_csharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="YamlDotNet">
-      <HintPath>..\..\packages\YamlDotNet.3.7.0\lib\net35\YamlDotNet.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\YamlDotNet.3.7.0\lib\net35\YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\core\mapsurfer.system\componentmodel\ResourceLoader.cs">
+      <Link>ComponentModel\ResourceLoader.cs</Link>
+    </Compile>
+    <Compile Include="Carto\CartoProjectType.cs" />
+    <Compile Include="Carto\Exceptions\NotSupportedPropertyException.cs" />
+    <Compile Include="Carto\Exceptions\ParsingException.cs" />
+    <Compile Include="Carto\Exceptions\CartoException.cs" />
+    <Compile Include="Carto\NodePropertyValue.cs" />
     <Compile Include="Carto\Parser\Tree\CartoDimension.cs" />
     <Compile Include="Carto\Translators\CartoTranslator.cs" />
     <Compile Include="Carto\Translators\CartoTranslatorFactory.cs" />
@@ -145,7 +115,7 @@
     <Compile Include="Carto\Parser\Tree\CartoFilterSet.cs" />
     <Compile Include="Carto\Parser\CartoParser.cs" />
     <Compile Include="Carto\Parser\CartoParsers.cs" />
-    <Compile Include="Carto\CartoReader.cs" />
+    <Compile Include="Carto\CartoProcessor.cs" />
     <Compile Include="CartoCSSFileType.cs" />
     <Compile Include="CartoCSSFileTypeFactory.cs" />
     <Compile Include="Carto\CartoProject.cs" />
@@ -165,6 +135,12 @@
     <Compile Include="Carto\Translators\Referencers\CartoPropertyReferencer.cs" />
     <Compile Include="Carto\Translators\Referencers\ICartoPropertyReferencer.cs" />
     <Compile Include="Carto\Translators\Mapnik\MapnikPropertyReferencer.cs" />
+    <Compile Include="ComponentModel\SR.cs" />
+    <Compile Include="Export\CartoExportDialog.cs" />
+    <Compile Include="Export\CartoUtils.cs" />
+    <Compile Include="Export\ICartoExporter.cs" />
+    <Compile Include="Export\MagnacartoExporter.cs" />
+    <Compile Include="Export\NativeFormatExporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Carto\Parser\Tree\CartoQuotedNode.cs" />
     <Compile Include="Carto\Parser\Tree\CartoFieldNode.cs" />
@@ -173,15 +149,79 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dotless\src\dotless.Core\dotless.Core.csproj">
-      <Project>{D7A24E58-68D0-4B10-A324-EA33C822FA56}</Project>
+    <ProjectReference Include="..\..\..\Core\MapSurfer.Core\MapSurfer.Core.csproj">
+      <Project>{1eae4280-0f9b-45a6-b7c5-f5f564378589}</Project>
+      <Name>MapSurfer.Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\MapSurfer.Data.GDALWrapper\MapSurfer.Data.GDALWrapper.csproj">
+      <Project>{78dfec1a-0402-4223-bd79-e6ef0d27922e}</Project>
+      <Name>MapSurfer.Data.GDALWrapper</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\MapSurfer.Data\MapSurfer.Data.csproj">
+      <Project>{df3137e7-97c3-4874-bcb5-5e1f2a37a1ea}</Project>
+      <Name>MapSurfer.Data</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\MapSurfer.Drawing\MapSurfer.Drawing.csproj">
+      <Project>{3d0551c0-0712-4934-9a47-bd65d14ab1dd}</Project>
+      <Name>MapSurfer.Drawing</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\MapSurfer.Geometries\MapSurfer.Geometries.csproj">
+      <Project>{3ea8dcdf-dcfa-4e1d-b5f8-89961fdd6af4}</Project>
+      <Name>MapSurfer.Geometries</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\MapSurfer.Logging\MapSurfer.Logging.csproj">
+      <Project>{37d5b17c-0af3-481c-b13b-0c2fbdd5e162}</Project>
+      <Name>MapSurfer.Logging</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\MapSurfer.Projections\MapSurfer.Projections.csproj">
+      <Project>{78629ae9-e46f-4eac-8dba-dac1b92ec913}</Project>
+      <Name>MapSurfer.Projections</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\MapSurfer.System\MapSurfer.System.csproj">
+      <Project>{a75bd18d-8919-4d7f-a334-cab181f47bca}</Project>
+      <Name>MapSurfer.System</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\MapSurfer.Windows.Forms\MapSurfer.Windows.Forms.csproj">
+      <Project>{c50e1bc7-31f8-4f2a-aa37-41973221e4c9}</Project>
+      <Name>MapSurfer.Windows.Forms</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\External Libraries\dotless-master\src\dotless.Core\dotless.Core.csproj">
+      <Project>{d7a24e58-68d0-4b10-a324-ea33c822fa56}</Project>
       <Name>dotless.Core</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\External Libraries\GeoAPI\GeoAPI.csproj">
+      <Project>{ffb69466-79de-466a-ada7-5c47c5c5ca3a}</Project>
+      <Name>GeoAPI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\External Libraries\ProjNET\ProjNET.csproj">
+      <Project>{e028bdd2-55e1-4e5f-be31-35faec8d6428}</Project>
+      <Name>ProjNET</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Properties\MapSurfer.Styling.CartoCSS.Strings.de.resx" />
+    <None Include="Properties\MapSurfer.Styling.CartoCSS.Strings.en-US.resx" />
+    <None Include="Properties\MapSurfer.Styling.CartoCSS.Strings.ru-RU.resx" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
+    <PostBuildEvent>"$(SolutionDir)\External References\Bin\resgen.exe" "$(ProjectDir)\Properties\MapSurfer.Styling.CartoCSS.Strings.en-US.resx" "$(ProjectDir)\bin\$(ConfigurationName)\Locales\MapSurfer.Styling.CartoCSS.Locales.en-US.resources"
+"$(SolutionDir)\External References\Bin\resgen.exe" "$(ProjectDir)\Properties\MapSurfer.Styling.CartoCSS.Strings.ru-RU.resx" "$(ProjectDir)\bin\$(ConfigurationName)\Locales\MapSurfer.Styling.CartoCSS.Locales.ru-RU.resources"
+"$(SolutionDir)\External References\Bin\resgen.exe" "$(ProjectDir)\Properties\MapSurfer.Styling.CartoCSS.Strings.de.resx" "$(ProjectDir)\bin\$(ConfigurationName)\Locales\MapSurfer.Styling.CartoCSS.Locales.de.resources"
+
+copy "$(TargetPath)" "$(SolutionDir)\Bin\$(ConfigurationName)\Core\Plugins\StylingFormats\CartoCSS\"
+copy "$(TargetDir)\Locales\" "$(SolutionDir)\Bin\$(ConfigurationName)\Core\Plugins\StylingFormats\CartoCSS\Locales\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

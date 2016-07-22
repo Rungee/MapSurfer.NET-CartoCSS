@@ -1,7 +1,7 @@
 ﻿//==========================================================================================
 //
 //		MapSurfer.Styling.Formats.CartoCSS
-//		Copyright (c) 2008-2015, MapSurfer.NET
+//		Copyright (c) 2008-2016, MapSurfer.NET
 //
 //    Authors: Maxim Rylov
 //
@@ -92,6 +92,7 @@ namespace MapSurfer.Styling.Formats.CartoCSS.Translators.Mapnik
         new CartoPropertyInfo("shield-wrap-before"),
         new CartoPropertyInfo("shield-wrap-character"),
         new CartoPropertyInfo("shield-halo-fill"),
+        new CartoPropertyInfo("shield-halo-opacity"),
         new CartoPropertyInfo("shield-halo-radius"),
         new CartoPropertyInfo("shield-character-spacing"),
         new CartoPropertyInfo("shield-line-spacing"),
@@ -139,7 +140,11 @@ namespace MapSurfer.Styling.Formats.CartoCSS.Translators.Mapnik
         new CartoPropertyInfo("raster-filter-factor"),
         new CartoPropertyInfo("raster-scaling"),
         new CartoPropertyInfo("raster-mesh-size"),
-        new CartoPropertyInfo("raster-comp-op")
+        new CartoPropertyInfo("raster-comp-op"),
+        new CartoPropertyInfo("raster-colorizer-default-mode"),
+        new CartoPropertyInfo("raster-colorizer-default-color"),
+        new CartoPropertyInfo("raster-colorizer-epsilon"),
+        new CartoPropertyInfo("raster-colorizer-stops")
       });
 
       AddTypeProperty(typeof(PointSymbolizer), "point", new CartoPropertyInfo[] {
@@ -169,6 +174,7 @@ namespace MapSurfer.Styling.Formats.CartoCSS.Translators.Mapnik
         new CartoPropertyInfo("text-fill"),
         new CartoPropertyInfo("text-opacity"),
         new CartoPropertyInfo("text-halo-fill"),
+        new CartoPropertyInfo("text-halo-opacity"),
         new CartoPropertyInfo("text-halo-radius"),
         new CartoPropertyInfo("text-halo-rasterizer"),
         new CartoPropertyInfo("text-dx"),
